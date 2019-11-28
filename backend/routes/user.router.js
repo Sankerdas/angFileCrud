@@ -46,7 +46,7 @@ router.post('/create-user', upload.single('avatar'),(req, res, next) => { // pos
         name: req.body.name,
         avatar: url+'/public/'+req.file.filename
     });
-    
+
     user.save().then(result => {
         console.log(result);
         res.status(201).json({
@@ -64,3 +64,5 @@ router.post('/create-user', upload.single('avatar'),(req, res, next) => { // pos
         })
     })
 });
+
+module.exports = router;

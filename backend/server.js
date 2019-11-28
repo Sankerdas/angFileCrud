@@ -24,7 +24,7 @@ mongoose.connect(dbConfig.db, {
 const app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
-    exteded: false
+    extended: false
 }));
 app.use(cors());
 
@@ -49,4 +49,4 @@ app.use(function(err, req, req, next){
     console.error(err.message);
     if(!err.statusCode) err.statusCode = 500;
     res.status(statusCode).send(err.message);
-});
+})  ;
