@@ -38,12 +38,15 @@ let User = require("../models/User"); // importing DB model
 
 // POST User
 router.post('/create-user', upload.single('avatar'),(req, res, next) => { // posting the data with file 
-    const url = req.protocol + '://' + req.get('host');
+
+    const url = req.protocol + '://' + req.get('host'); // get url
+
     const user = new User({ // model initialized
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         avatar: url+'/public/'+req.file.filename
     });
+    
     user.save().then(result => {
         console.log(result);
         res.status(201).json({
