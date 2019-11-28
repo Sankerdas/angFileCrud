@@ -8,7 +8,7 @@ let userSchema = new Schema({
     name: {
         type: String
     },
-    avathar: {
+    avatar: {
         type: String
     }
 },
