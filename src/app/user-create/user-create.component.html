@@ -1,1 +1,27 @@
-<p>user-create works!</p>
+<form [formGroup]='form' >
+
+  <!-- Image Preview -->  
+  <div class="imgPrev" *ngIf="imagePreview !== '' && imagePreview " >
+      <img [src]="imagePreview" alt="Uploaded Image" class="img-fluid img-thumbnail rounded">
+  </div>
+
+  <!-- File -->
+  <div class="form-group" >
+    <input type="file" class="form-control" (change)='fileUpload($event)' />
+  </div>
+
+  <!-- Name -->
+  <div class="form-group input-group-lg">
+    <input type="text" class="form-control" placeholder="Name" formControlName='name' >
+  </div>
+
+  <!-- Submit -->
+  <div class="form-group">
+    <button class="btn btn-danger btn-block btn-lg">Create User</button>
+  </div>
+
+  </form>
+
+  <p>
+    {{ form.value | json }}
+  </p>
