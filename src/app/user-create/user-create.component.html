@@ -1,4 +1,4 @@
-<form [formGroup]='form' >
+<form [formGroup]='form' (ngSubmit)='submitForm()' >
 
   <!-- Image Preview -->  
   <div class="imgPrev" *ngIf="imagePreview !== '' && imagePreview " >

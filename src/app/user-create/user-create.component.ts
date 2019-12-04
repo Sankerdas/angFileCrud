@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PathLocationStrategy } from '@angular/common';
+import { DataService } from '../shared/data.service';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-user-create',
@@ -9,8 +11,9 @@ import { PathLocationStrategy } from '@angular/common';
 })
 export class UserCreateComponent implements OnInit {
   imagePreview: any;
+  percentDone: any = 0;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private ds: DataService, private router: Router) { }
 
   // Reactive form
   form: FormGroup = this.fb.group({
@@ -30,6 +33,12 @@ export class UserCreateComponent implements OnInit {
      this.imagePreview = reader.result;
    }
    reader.readAsDataURL(uploadedFile);
+  }
+
+  submitForm(){
+    this.ds.addUser(this.form.value.name, this.form.value.avatar).subscribe((event: HttpEvent<any>) => {
+      console.log(event);
+    })
   }
 
   ngOnInit() {

@@ -49,4 +49,4 @@ app.use(function(err, req, req, next){
     console.error(err.message);
     if(!err.statusCode) err.statusCode = 500;
     res.status(statusCode).send(err.message);
-})  ;
+});

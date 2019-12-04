@@ -12,8 +12,7 @@ const storage = multer.diskStorage({
         cb(null, DIR);
     },
     filename: (req, file, cb) => {
-        // const fileName = file.originalname.toLocaleLowerCase().split(' ').join('-');
-        const fileName = file;
+        const fileName = file.originalname.toLocaleLowerCase().split(' ').join('-');
         cb(null, fileName)
     }
 })
@@ -25,7 +24,7 @@ var upload = multer({
         fileSize: 1024*1024*5,
     },
     fileFilter:(req, file, cb) => {
-        if(file.mimetype == ('image/png')) {
+        if (file.mimetype == 'image/png' || file.mimetype == 'image/jpg' || file.mimetype == 'image/jpeg') {
             cb(null, true);
         } else {
             cb(null, false);
@@ -36,7 +35,7 @@ var upload = multer({
 
 let User = require("../models/User"); // importing DB model
 
-// POST User
+// Add User (POST)
 router.post('/create-user', upload.single('avatar'),(req, res, next) => { // posting the data with file 
 
     const url = req.protocol + '://' + req.get('host'); // get url
