@@ -1,5 +1,12 @@
 <form [formGroup]='form' (ngSubmit)='submitForm()' >
 
+    <!-- Progress Bar -->
+    <div class="progress form-group" *ngIf="percentDone">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+          [style.width.%]="percentDone">
+        </div>
+      </div>
+
   <!-- Image Preview -->  
   <div class="imgPrev" *ngIf="imagePreview !== '' && imagePreview " >
       <img [src]="imagePreview" alt="Uploaded Image" class="img-fluid img-thumbnail rounded">

@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
 })
 export class UserCreateComponent implements OnInit {
   imagePreview: any;
-  percentDone: any = 0;
+  percentDone: any = 2;
 
   constructor(private fb: FormBuilder, private ds: DataService, private router: Router) { }
 
@@ -31,13 +31,28 @@ export class UserCreateComponent implements OnInit {
    const reader = new FileReader();
    reader.onload = () => {
      this.imagePreview = reader.result;
+     console.log(reader);
    }
    reader.readAsDataURL(uploadedFile);
   }
 
   submitForm(){
     this.ds.addUser(this.form.value.name, this.form.value.avatar).subscribe((event: HttpEvent<any>) => {
-      console.log(event);
+      // console.log(event);
+      switch (event.type) {
+        case HttpEventType.Sent:
+          console.log('Request has been made!' + HttpEventType.Sent);
+          break;
+        case HttpEventType.ResponseHeader:
+          console.log('Response header has been received!' + HttpEventType.ResponseHeader);
+          break;
+        case HttpEventType.UploadProgress:
+          this.percentDone = Math.round(event.loaded / event.total * 100);
+          console.log(`Uploaded! ${this.percentDone}%`);
+          break;
+        case HttpEventType.Response:
+          console.log('User successfully created!', event.body);
+      }
     })
   }
 
