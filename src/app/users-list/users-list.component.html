@@ -1,1 +1,17 @@
-<p>users-list works!</p>
+<div class="container users-table" >
+    <div class="alert alert-success text-center" role="alert" *ngIf="Users.length <= 0" >
+        No Users Added
+    </div>
+    <ul class="list-unstyled">
+        <li class="media" *ngFor="let user of Users; let i = index" >
+            <p>
+                {{ i+1 }}
+            </p>
+            <img [src]="user.avatar" class="imgCls rounded" [alt]="user.name" />
+            <div class="media-body" >
+                <h5 class="mt-0 mb-1" > {{ user.name }} </h5>
+                {{ user._id }}
+            </div>
+        </li>
+    </ul>
+</div>

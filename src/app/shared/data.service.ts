@@ -14,6 +14,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  // Add user
   addUser(name: string, profileImage: File): Observable<any> {
     var formData: any = new FormData; // the incomming data added in FromData and send to backend (node route)
     formData.append('name', name); 
@@ -23,5 +24,10 @@ export class DataService {
       reportProgress: true,
       observe: 'events'
     });
+  }
+
+  // Get Users
+  getUsers() {
+    return this.http.get(`${this.baseURL}`);
   }
 }
