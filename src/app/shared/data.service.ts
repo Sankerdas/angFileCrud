@@ -30,4 +30,8 @@ export class DataService {
   getUsers() {
     return this.http.get(`${this.baseURL}`);
   }
+
+  deleteUser(id){
+    return this.http.get(`${this.baseURL}/delete-user/${id}`)
+  }
 }

@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
 })
 export class UserCreateComponent implements OnInit {
   imagePreview: any;
-  percentDone: any = 2;
+  percentDone: any = 1;
 
   constructor(private fb: FormBuilder, private ds: DataService, private router: Router) { }
 
@@ -53,6 +53,9 @@ export class UserCreateComponent implements OnInit {
         case HttpEventType.Response:
           console.log('User successfully created!', event.body);
       }
+      this.form.reset();
+      this.imagePreview = null;
+      // this.router.navigate(['/list-users']);
     })
   }
 

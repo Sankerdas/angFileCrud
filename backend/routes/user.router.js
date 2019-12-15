@@ -64,6 +64,7 @@ router.post('/create-user', upload.single('avatar'),(req, res, next) => { // pos
     })
 });
 
+// Get Users
 router.get('/',(req, res, next) => {
     User.find().then(data => {
         res.status(200).json({
@@ -71,6 +72,14 @@ router.get('/',(req, res, next) => {
             users: data
         });
     });
+});
+
+// Delete User
+router.get('/delete-user/:id', (req, res, next) => {
+    User.findByIdAndRemove({_id: req.params.id}, function (err, user) {
+        if(err) res.json(err)
+        else res.json('User Removed successfully !');
+    }); 
 });
 
 module.exports = router;

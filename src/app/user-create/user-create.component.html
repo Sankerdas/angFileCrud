@@ -29,6 +29,6 @@
 
   </form>
 
-  <p>
-    {{ form.value | json }}
-  </p>
+  <div class="alert alert-success text-center" role="alert" *ngIf="imagePreview === null" >
+    User added Successfully
+  </div>

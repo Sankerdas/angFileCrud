@@ -10,7 +10,8 @@
             <img [src]="user.avatar" class="imgCls rounded" [alt]="user.name" />
             <div class="media-body" >
                 <h5 class="mt-0 mb-1" > {{ user.name }} </h5>
-                {{ user._id }}
+                <a class="btn btn-primary text-white" >Edit</a>
+                <a class="btn btn-danger text-white" (click)="delete_user(user._id)" >Delete</a>
             </div>
         </li>
     </ul>
