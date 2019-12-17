@@ -1,0 +1,36 @@
+<form [formGroup]='editForm' (ngSubmit)='update_user()' >
+
+    <!-- Progress Bar -->
+    <!-- <div class="progress form-group" *ngIf="percentDone">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+        [style.width.%]="percentDone">
+    </div>
+    </div> -->
+
+  <!-- Image Preview -->  
+  <div class="imgPrev" >
+      <img [src]="user.avatar" alt="Uploaded Image" class="img-fluid img-thumbnail rounded">
+  </div>
+
+  <!-- File -->
+  <div class="form-group" >
+    <input type="file" class="form-control" (change)='fileUpload($event)' />
+  </div>
+
+  <!-- Name -->
+  <div class="form-group input-group-lg">
+    <input type="text" class="form-control" placeholder="Name" formControlName='name' [(ngModel)]="user.name" >
+  </div>
+
+  <!-- Submit -->
+  <div class="form-group">
+    <button class="btn btn-danger btn-block btn-lg">Edit User</button>
+  </div>
+
+  </form>
+
+  <p> {{ editForm.value | json }} </p>
+
+  <!-- <div class="alert alert-success text-center" role="alert">
+    User added Successfully
+  </div> -->

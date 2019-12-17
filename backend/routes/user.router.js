@@ -74,6 +74,14 @@ router.get('/',(req, res, next) => {
     });
 });
 
+// Edit User
+router.get('/edit-user/:id', (req, res, next) => {
+    User.findById(req.params.id, (err, user) => {
+        if(err) console.log('error in edit' + err)
+        else res.json(user)
+    });
+})
+
 // Delete User
 router.get('/delete-user/:id', (req, res, next) => {
     User.findByIdAndRemove({_id: req.params.id}, function (err, user) {

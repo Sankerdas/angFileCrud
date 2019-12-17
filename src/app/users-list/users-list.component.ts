@@ -24,7 +24,7 @@ export class UsersListComponent implements OnInit {
   }
 
   delete_user(id) {
-    if(confirm('Do you want to delte this user..?'))
+    if(confirm('Do you want to delete this user..?'))
       this.ds.deleteUser(id).subscribe(res => {
         console.log(res)
         this.get_users();

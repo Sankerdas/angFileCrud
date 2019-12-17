@@ -31,6 +31,12 @@ export class DataService {
     return this.http.get(`${this.baseURL}`);
   }
 
+  // Edit User
+  editUser(id) {
+    return this.http.get(`${this.baseURL}/edit-user/${id}`);
+  }
+  
+  // Delete User
   deleteUser(id){
     return this.http.get(`${this.baseURL}/delete-user/${id}`)
   }
