@@ -9,7 +9,7 @@
 
   <!-- Image Preview -->  
   <div class="imgPrev" >
-      <img [src]="user.avatar" alt="Uploaded Image" class="img-fluid img-thumbnail rounded">
+      <img [src]="!imagePreview ? user.avatar : imagePreview " alt="Uploaded Image" class="img-fluid img-thumbnail rounded">
   </div>
 
   <!-- File -->

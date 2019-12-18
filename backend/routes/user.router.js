@@ -82,6 +82,36 @@ router.get('/edit-user/:id', (req, res, next) => {
     });
 })
 
+
+// Update User
+router.post('/update-user/:id', upload.single('avatar'),(req, res, next) => {
+
+    User.findById(req.params.id, (err, user) => {
+        if(!user){
+            res.json('Could not load documet');
+        } else {
+            if(req.body.avatar || req.file.filename === null) {
+                user.name = req.body.name,
+                user.save().then(user => {
+                    res.json('success');
+                }).catch(err => {
+                    res.status(400).send(err);
+                })
+            } else {
+                const url = req.protocol + '://' + req.get('host'); // get url
+                user.name = req.body.name,
+                user.avatar = url+'/public/'+req.file.filename
+                user.save().then(user => {
+                    res.json('User and profile image updated..!')
+                }).catch(err => {
+                    res.status(400).send(err);
+                })
+            }
+        }
+    })
+})
+
+
 // Delete User
 router.get('/delete-user/:id', (req, res, next) => {
     User.findByIdAndRemove({_id: req.params.id}, function (err, user) {

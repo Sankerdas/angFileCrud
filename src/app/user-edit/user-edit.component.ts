@@ -33,6 +33,13 @@ export class UserEditComponent implements OnInit {
     reader.readAsDataURL(uploadedFile);
   }
 
+  update_user() {
+    this.ds.updateUser(this.paramId, this.editForm.value).subscribe(res => {
+      this.router.navigate(['/list-users']);
+      console.log(res)
+    })
+  }
+
 
   ngOnInit() {
     this.actRoute.params.subscribe(params => {

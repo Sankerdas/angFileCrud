@@ -35,6 +35,14 @@ export class DataService {
   editUser(id) {
     return this.http.get(`${this.baseURL}/edit-user/${id}`);
   }
+
+  // Update User
+  updateUser(id, data){
+    const updateFormData: any = new FormData;
+    updateFormData.append('name', data.name);
+    updateFormData.append('avatar', data.avatar);
+    return this.http.post<User>(`${this.baseURL}/update-user/${id}`, updateFormData);
+  }
   
   // Delete User
   deleteUser(id){
