@@ -31,7 +31,6 @@ export class UserCreateComponent implements OnInit {
    const reader = new FileReader();
    reader.onload = () => {
      this.imagePreview = reader.result;
-     console.log(reader);
    }
    reader.readAsDataURL(uploadedFile);
   }

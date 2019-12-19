@@ -1,13 +1,29 @@
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      MEAN Stack CRUD with Image Upload
+    </a>
+  
+    <button class="navbar-toggler" type="button"
+            (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+  
+    <div  class="collapse navbar-collapse"
+         [ngClass]="{ 'show': navbarOpen }">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="[ '/create-user' ]" routerLinkActive="active">Create User</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="[ '/list-users' ]" routerLinkActive="active">Users</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
 
-<ul>
-    <li>
-        <a [routerLink]="[ '/create-user' ]" routerLinkActive="active">Create User</a>
-    </li>
-    <li>
-        <a [routerLink]="[ '/list-users' ]" routerLinkActive="active">List Users</a>
-    </li>
-</ul>
-
-<div class="container">
+<div class="container marTop20">
     <router-outlet></router-outlet>
 </div>
