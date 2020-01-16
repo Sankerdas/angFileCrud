@@ -36,7 +36,7 @@ var upload = multer({
 let User = require("../models/User"); // importing DB model
 
 // Add User (POST)
-router.post('/create-user', upload.single('avatar'),(req, res, next) => { // posting the data with file 
+router.post('/create-user', upload.single('avatar'),(req, res, next) => { // posting the data with file
 
     const url = req.protocol + '://' + req.get('host'); // get url
 
@@ -117,7 +117,7 @@ router.get('/delete-user/:id', (req, res, next) => {
     User.findByIdAndRemove({_id: req.params.id}, function (err, user) {
         if(err) res.json(err)
         else res.json('User Removed successfully !');
-    }); 
+    });
 });
 
 module.exports = router;

@@ -25,7 +25,7 @@ export class UserCreateComponent implements OnInit {
     // file adding to form
    const uploadedFile = (e.target as HTMLInputElement).files[0]; // getting file
    this.form.patchValue({ avatar:uploadedFile }); // patching form data and adding the file
-   this.form.get('avatar').updateValueAndValidity(); // check validity 
+   this.form.get('avatar').updateValueAndValidity(); // check validity
 
    // Imager preview
    const reader = new FileReader();

@@ -17,7 +17,7 @@ export class DataService {
   // Add user
   addUser(name: string, profileImage: File): Observable<any> {
     var formData: any = new FormData; // the incomming data added in FromData and send to backend (node route)
-    formData.append('name', name); 
+    formData.append('name', name);
     formData.append('avatar', profileImage);
     console.log(formData);
     return this.http.post<User>(`${this.baseURL}/create-user`, formData, {
@@ -43,7 +43,7 @@ export class DataService {
     updateFormData.append('avatar', data.avatar);
     return this.http.post<User>(`${this.baseURL}/update-user/${id}`, updateFormData);
   }
-  
+
   // Delete User
   deleteUser(id){
     return this.http.get(`${this.baseURL}/delete-user/${id}`)
