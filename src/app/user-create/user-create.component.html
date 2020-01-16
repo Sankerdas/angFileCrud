@@ -22,12 +22,32 @@
     <input type="text" class="form-control" placeholder="Name" formControlName='name' >
   </div>
 
+  <!-- Phone -->
+  <div class="form-group input-group-lg">
+    <input type="number" class="form-control" placeholder="Phone" formControlName='phone' >
+  </div>
+
+  <!-- email -->
+  <div class="form-group input-group-lg">
+    <input type="text" class="form-control" placeholder="Email" formControlName='email' >
+  </div>
+
+  <!-- password -->
+  <div class="form-group input-group-lg">
+    <input type="text" class="form-control" placeholder="Password" formControlName='password' >
+  </div>
+
   <!-- Submit -->
   <div class="form-group">
     <button class="btn btn-danger btn-block btn-lg">Create User</button>
   </div>
 
   </form>
+
+  <p>
+    is valid : {{ form.valid}} <br>
+    {{ form.value | json }}
+  </p>
 
   <div class="alert alert-success text-center" role="alert" *ngIf="imagePreview === null" >
     User added Successfully

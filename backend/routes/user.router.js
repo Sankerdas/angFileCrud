@@ -43,6 +43,9 @@ router.post('/create-user', upload.single('avatar'),(req, res, next) => { // pos
     const user = new User({ // model initialized
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email,
+        password: req.body.password,
         avatar: url+'/public/'+req.file.filename
     });
 
@@ -53,6 +56,9 @@ router.post('/create-user', upload.single('avatar'),(req, res, next) => { // pos
             userCreated: {
                 _id: result._id,
                 name: result.name,
+                phone: result.phone,
+                email: result.email,
+                password: result.password,
                 avatar: result.avatar
             }
         })
@@ -92,6 +98,9 @@ router.post('/update-user/:id', upload.single('avatar'),(req, res, next) => {
         } else {
             if(req.body.avatar || req.file.filename === null) {
                 user.name = req.body.name,
+                user.phone =  req.body.phone,
+                user.email = req.body.email,
+                user.password = req.body.password,
                 user.save().then(user => {
                     res.json('success');
                 }).catch(err => {
@@ -100,6 +109,9 @@ router.post('/update-user/:id', upload.single('avatar'),(req, res, next) => {
             } else {
                 const url = req.protocol + '://' + req.get('host'); // get url
                 user.name = req.body.name,
+                user.phone =  req.body.phone,
+                user.email = req.body.email,
+                user.password = req.body.password,
                 user.avatar = url+'/public/'+req.file.filename
                 user.save().then(user => {
                     res.json('User and profile image updated..!')

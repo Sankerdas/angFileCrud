@@ -15,9 +15,12 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   // Add user
-  addUser(name: string, profileImage: File): Observable<any> {
-    var formData: any = new FormData; // the incomming data added in FromData and send to backend (node route)
-    formData.append('name', name);
+  addUser(UserData: any, profileImage: File): Observable<any> {
+    const formData: any = new FormData; // the incomming data added in FromData and send to backend (node route)
+    formData.append('name', UserData.name);
+    formData.append('phone', UserData.phone);
+    formData.append('email', UserData.email);
+    formData.append('password', UserData.password);
     formData.append('avatar', profileImage);
     console.log(formData);
     return this.http.post<User>(`${this.baseURL}/create-user`, formData, {
@@ -37,15 +40,20 @@ export class DataService {
   }
 
   // Update User
-  updateUser(id, data){
+  updateUser(id, UserData) {
     const updateFormData: any = new FormData;
-    updateFormData.append('name', data.name);
-    updateFormData.append('avatar', data.avatar);
+
+    updateFormData.append('name', UserData.name);
+    updateFormData.append('phone', UserData.phone);
+    updateFormData.append('email', UserData.email);
+    updateFormData.append('password', UserData.password);
+    updateFormData.append('avatar', UserData.avatar);
+
     return this.http.post<User>(`${this.baseURL}/update-user/${id}`, updateFormData);
   }
 
   // Delete User
-  deleteUser(id){
-    return this.http.get(`${this.baseURL}/delete-user/${id}`)
+  deleteUser(id) {
+    return this.http.get(`${this.baseURL}/delete-user/${id}`);
   }
 }

@@ -12,8 +12,11 @@ export class UserEditComponent implements OnInit {
 
   constructor(private ds: DataService, private fb: FormBuilder, private actRoute: ActivatedRoute, private router: Router) { }
 
-  editForm : FormGroup = this.fb.group({
+  editForm: FormGroup = this.fb.group({
     name: ['', Validators.required ],
+    phone: ['', Validators.required ],
+    email: ['', Validators.required ],
+    password: ['', Validators.required ],
     avatar: [null, Validators.required]
   });
 
@@ -29,15 +32,15 @@ export class UserEditComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;
-    }
+    };
     reader.readAsDataURL(uploadedFile);
   }
 
   update_user() {
     this.ds.updateUser(this.paramId, this.editForm.value).subscribe(res => {
       this.router.navigate(['/list-users']);
-      console.log(res)
-    })
+      console.log(res);
+    });
   }
 
 
@@ -45,9 +48,9 @@ export class UserEditComponent implements OnInit {
     this.actRoute.params.subscribe(params => {
       this.ds.editUser(params['id']).subscribe(res => {
         this.user = res;
-        this.paramId = params['id']; 
-      })
-    })
+        this.paramId = params['id'];
+      });
+    });
   }
 
 }

@@ -7,7 +7,7 @@
     </div>
     </div> -->
 
-  <!-- Image Preview -->  
+  <!-- Image Preview -->
   <div class="imgPrev" >
       <img [src]="!imagePreview ? user.avatar : imagePreview " alt="Uploaded Image" class="img-fluid img-thumbnail rounded">
   </div>
@@ -22,6 +22,21 @@
     <input type="text" class="form-control" placeholder="Name" formControlName='name' [(ngModel)]="user.name" >
   </div>
 
+  <!-- phone -->
+  <div class="form-group input-group-lg">
+    <input type="number" class="form-control" placeholder="Phone" formControlName='phone' [(ngModel)]="user.phone" >
+  </div>
+
+  <!-- email -->
+  <div class="form-group input-group-lg">
+    <input type="text" class="form-control" placeholder="Email" formControlName='email' [(ngModel)]="user.email" >
+  </div>
+
+  <!-- password -->
+  <div class="form-group input-group-lg">
+    <input type="text" class="form-control" placeholder="Password" formControlName='password' [(ngModel)]="user.password" >
+  </div>
+
   <!-- Submit -->
   <div class="form-group">
     <button class="btn btn-danger btn-block btn-lg">Edit User</button>
@@ -29,7 +44,7 @@
 
   </form>
 
-  <p> {{ editForm.value | json }} </p>
+  <p>     is valid : {{ editForm.valid}} <br>  {{ editForm.value | json }} </p>
 
   <!-- <div class="alert alert-success text-center" role="alert">
     User added Successfully
