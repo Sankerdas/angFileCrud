@@ -132,4 +132,22 @@ router.get('/delete-user/:id', (req, res, next) => {
     });
 });
 
+router.post('/user-login',(req, res) => {
+  User.findOne({email: req.body.email}, (error, user) => {
+    if(error) {
+      console.log(error);
+    } else {
+      if(!user){
+        res.status(401).send('Invalid Email');
+      } else {
+        if(user.password !== req.body.password) {
+          res.status(401).send('Invalid Password');
+        } else {
+          res.status(200).send(user);
+        }
+      }
+    }
+  });
+});
+
 module.exports = router;

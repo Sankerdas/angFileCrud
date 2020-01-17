@@ -56,4 +56,14 @@ export class DataService {
   deleteUser(id) {
     return this.http.get(`${this.baseURL}/delete-user/${id}`);
   }
+
+  // Login User
+  loginUser(em, psd) {
+    const logObj = {
+      email: em,
+      password: psd,
+    };
+
+    return this.http.post(`${this.baseURL}/user-login`, logObj);
+  }
 }

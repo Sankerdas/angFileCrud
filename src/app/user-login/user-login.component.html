@@ -1,0 +1,26 @@
+<form [formGroup]='loginForm' (ngSubmit)='login(em.value, ps.value)' >
+
+<!-- email -->
+<div class="form-group input-group-lg">
+  <input type="text" class="form-control" placeholder="Email" formControlName='email' #em >
+</div>
+
+<!-- password -->
+<div class="form-group input-group-lg">
+  <input type="text" class="form-control" placeholder="Password" formControlName='password' #ps >
+</div>
+
+<!-- Submit -->
+<div class="form-group">
+  <button class="btn btn-danger btn-block btn-lg">Login</button>
+</div>
+
+<p>
+  {{ loginForm.value | json }}
+</p>
+
+<p>
+  {{ loginForm.status }}
+</p>
+
+</form>
