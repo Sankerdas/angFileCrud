@@ -9,6 +9,8 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { DataService } from './shared/data.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DataService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
