@@ -3,7 +3,9 @@
 let express = require('express'),
     multer = require('multer'),
     mongoose = require('mongoose'),
+    jwt = require('jsonwebtoken');
     router = express.Router();
+
 
 // multer file upload path
 const DIR = './public/';
@@ -143,7 +145,9 @@ router.post('/user-login',(req, res) => {
         if(user.password !== req.body.password) {
           res.status(401).send('Invalid Password');
         } else {
-          res.status(200).send(user);
+          let payload = {subject: user._id}; // defining the payload
+          token = jwt.sign(payload, 'secretKey'); // asigning the token with a secret key
+          res.status(200).send( {token} ); // sending token as a response to front end
         }
       }
     }

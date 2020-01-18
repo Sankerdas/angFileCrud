@@ -63,7 +63,6 @@ export class DataService {
       email: em,
       password: psd,
     };
-
     return this.http.post(`${this.baseURL}/user-login`, logObj);
   }
 }

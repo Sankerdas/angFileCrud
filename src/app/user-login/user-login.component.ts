@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../shared/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -9,7 +10,7 @@ import { DataService } from '../shared/data.service';
 })
 export class UserLoginComponent implements OnInit {
 
-  constructor(private ds: DataService, private fb: FormBuilder) { }
+  constructor(private ds: DataService, private fb: FormBuilder, private router: Router) { }
 
   loginForm: FormGroup = this.fb.group({
     email: ['', Validators.required],
@@ -18,7 +19,12 @@ export class UserLoginComponent implements OnInit {
 
   login(em, ps) {
     this.ds.loginUser(em, ps).subscribe(
-      res => { console.log(res); }
+      res => {
+        const tkn = res.token;
+        localStorage.setItem('token', tkn);
+        // this.router.navigate(['/list-users']);
+
+       }
     );
   }
 
