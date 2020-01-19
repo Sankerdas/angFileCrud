@@ -65,4 +65,9 @@ export class DataService {
     };
     return this.http.post(`${this.baseURL}/user-login`, logObj);
   }
+
+  // Get token
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }
